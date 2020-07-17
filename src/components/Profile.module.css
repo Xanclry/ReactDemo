@@ -1,0 +1,18 @@
+.content {
+    grid-area: c;
+    background-color: lightgray;
+}
+
+.content img {
+    width: 100%;
+}
+
+.item {
+    margin: 30px;
+    padding: 80px 80px 80px 50px;
+
+}
+
+.selected {
+    background-color: #e1a7ff;
+}

@@ -1,10 +1,11 @@
-import React from "react";
+import React from "react"
+import s from './Profile.module.css'
 
 const Profile = () => {
     return (
-        <div className={'content'}>
+        <div className={s.content}>
             <div>
-                <img src={'https://www.ejin.ru/wp-content/uploads/2019/05/gora-22.jpg'}/>
+                <img alt={'logo'} src={'https://www.ejin.ru/wp-content/uploads/2019/05/gora-22.jpg'}/>
             </div>
             <div>
                 {/*<img src={'https://yt3.ggpht.com/a/AATXAJwUJku4i_6dn6EU--eL9dEY3fplFN2fjiPYjQ=s900-c-k-c0xffffffff-no-rj-mo'}/>*/}
@@ -15,10 +16,10 @@ const Profile = () => {
                 <div>
                     New post
                 </div>
-                <div>
+                <div className={`${s.item} ${s.selected}`}>
                     post 1
                 </div>
-                <div>
+                <div className={s.item}>
                     post 2
                 </div>
             </div>
@@ -26,4 +27,4 @@ const Profile = () => {
     )
 }
 
-export default Profile;
+export default Profile
