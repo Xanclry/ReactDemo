@@ -4,8 +4,8 @@ import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = () => {
     return (
-        <div className={s.content}>
-            <div>
+        <div>
+            <div className={s.backgroundImg}>
                 <img alt={'logo'} src={'https://www.ejin.ru/wp-content/uploads/2019/05/gora-22.jpg'}/>
             </div>
             <div>
