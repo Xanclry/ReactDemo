@@ -1,0 +1,18 @@
+.item {
+    margin: 30px;
+    padding: 50px 50px 50px 20px;
+    background-color: #bfbfbf;
+    display: flex;
+    align-items: center;
+}
+
+.item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    margin-right: 50px;
+}
+
+.selected {
+    background-color: #e1a7ff;
+}
