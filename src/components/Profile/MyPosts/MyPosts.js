@@ -9,6 +9,7 @@ const MyPosts = (props) => {
     let textAreaElement = React.createRef()
 
     let addPost = () => {
+        debugger
         props.addPost()
     };
 
