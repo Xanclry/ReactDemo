@@ -3,25 +3,39 @@ import s from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
 
 
-const Navbar = () => {
+const Navbar = (props) => {
+    let friendsTags = props.state.friends.map((element) =>
+        <div className={s.friendBlock}>
+            <img src={element.picture} alt={'avatar'}/>
+            <span className={s.friendName}>{element.name}</span>
+        </div>)
+
     return (
-        <nav className={s.nav}>
-            <div className={s.item}>
-                <NavLink to={'/profile'} activeClassName={s.active}>Profile</NavLink>
+        <div className={s.wrapper}>
+            <nav className={s.nav}>
+                <div className={s.item}>
+                    <NavLink to={'/profile'} activeClassName={s.active}>Profile</NavLink>
+                </div>
+                <div className={s.item}>
+                    <NavLink to={'/dialogs'} activeClassName={s.active}>Messages</NavLink>
+                </div>
+                <div className={s.item}>
+                    <NavLink to={'/news'} activeClassName={s.active}>News</NavLink>
+                </div>
+                <div className={s.item}>
+                    <NavLink to={'/music'} activeClassName={s.active}>Music</NavLink>
+                </div>
+                <div className={s.item}>
+                    <NavLink to={'/settings'} activeClassName={s.active}>Settings</NavLink>
+                </div>
+            </nav>
+            <div className={s.friendsWrapper}>
+                <h2>Friends</h2>
+                <div className={s.friends}>
+                    {friendsTags}
+                </div>
             </div>
-            <div className={s.item}>
-                <NavLink to={'/dialogs'} activeClassName={s.active}>Messages</NavLink>
-            </div>
-            <div className={s.item}>
-                <NavLink to={'/news'} activeClassName={s.active}>News</NavLink>
-            </div>
-            <div className={s.item}>
-                <NavLink to={'/music'} activeClassName={s.active}>Music</NavLink>
-            </div>
-            <div className={s.item}>
-                <NavLink to={'/settings'} activeClassName={s.active}>Settings</NavLink>
-            </div>
-        </nav>
+        </div>
     )
 }
 

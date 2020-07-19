@@ -1,6 +1,11 @@
+.wrapper {
+    height: 100%;
+    background-color: darkcyan;
+
+}
+
 .nav {
     grid-area: n;
-    background-color: darkcyan;
     padding: 15px;
 }
 
@@ -11,4 +16,30 @@
 
 .item a.active {
     color: #ffe622;
+}
+
+.friendsWrapper {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.friends {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.friends .friendBlock img {
+    height: 50px;
+    width: 50px;
+    border-radius: 30px;
+    margin: auto;
+}
+
+.friends .friendBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
