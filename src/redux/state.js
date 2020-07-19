@@ -20,7 +20,8 @@ let state = {
             {id: 1, message: 'Hello! How are you?', likeCount: 12},
             {id: 2, message: 'It\'s my first post', likeCount: 22},
             {id: 3, message: 'Wow!', likeCount: 89},
-        ]
+        ],
+        textareaValue: '123'
     },
     sidebar: {
         friends: [
@@ -40,9 +41,15 @@ let state = {
     }
 }
 
-export let addPost = (postMessage) => {
-    state.profilePage.posts.push({id: 4, message: postMessage, likeCount: 0})
+export let addPost = () => {
+    state.profilePage.posts.push({id: 4, message: state.profilePage.textareaValue, likeCount: 0})
+    state.profilePage.textareaValue = ''
     rerenderApp(state)
 };
+
+export let changeTextArea = (newValue) => {
+    state.profilePage.textareaValue = newValue
+    rerenderApp(state)
+}
 
 export default state
