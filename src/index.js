@@ -1,9 +1,20 @@
 import React from 'react';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import state from "./redux/state";
-import {rerenderApp} from "./render";
+import state, {subscribe} from "./redux/state";
+import ReactDOM from "react-dom";
+import App from "./App";
 
+let rerenderApp = (state) => {
+    ReactDOM.render(
+        <React.StrictMode>
+            <App state={state}/>
+        </React.StrictMode>,
+        document.getElementById('root')
+    );
+}
+
+subscribe(rerenderApp)
 
 rerenderApp(state)
 

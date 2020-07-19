@@ -1,4 +1,6 @@
-import {rerenderApp} from "../render";
+let rerenderApp = () => {
+    console.log('State was changed')
+}
 
 let state = {
     dialogsPage: {
@@ -41,15 +43,19 @@ let state = {
     }
 }
 
-export let addPost = () => {
+export const addPost = () => {
     state.profilePage.posts.push({id: 4, message: state.profilePage.textareaValue, likeCount: 0})
     state.profilePage.textareaValue = ''
     rerenderApp(state)
 };
 
-export let changeTextArea = (newValue) => {
+export const changeTextArea = (newValue) => {
     state.profilePage.textareaValue = newValue
     rerenderApp(state)
+}
+
+export let subscribe = (observer) => {
+    rerenderApp = observer
 }
 
 export default state
