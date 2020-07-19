@@ -1,3 +1,5 @@
+import {rerenderApp} from "../render";
+
 let state = {
     dialogsPage: {
         dialogs: [
@@ -39,8 +41,8 @@ let state = {
 }
 
 export let addPost = (postMessage) => {
-    debugger
     state.profilePage.posts.push({id: 4, message: postMessage, likeCount: 0})
+    rerenderApp(state)
 };
 
 export default state
