@@ -1,5 +1,8 @@
 const ADD_POST = 'ADD_POST'
 const CHANGE_NEW_POST_TEXT = 'CHANGE_NEW_POST_TEXT'
+const ADD_MESSAGE = 'ADD_MESSAGE'
+const CHANGE_NEW_MESSAGE_TEXT = 'CHANGE_NEW_MESSAGE_TEXT'
+
 
 let store = {
     _state: {
@@ -15,7 +18,8 @@ let store = {
                 {id: 2, message: 'Yo'},
                 {id: 3, message: 'How are you?'},
                 {id: 4, message: 'Yo again'},
-            ]
+            ],
+            newMessageText: '',
         },
         profilePage: {
             posts: [
@@ -50,13 +54,33 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
-                this._state.profilePage.posts.push({id: 4, message: this._state.profilePage.textareaValue, likeCount: 0})
+        switch (action.type) {
+            case ADD_POST: {
+                this._state.profilePage.posts.push({
+                    id: 4,
+                    message: this._state.profilePage.textareaValue,
+                    likeCount: 0
+                })
                 this._state.profilePage.textareaValue = ''
-                this._callSubscriber(store)
-        } else if (action.type === CHANGE_NEW_POST_TEXT) {
+                this._callSubscriber(this)
+                break
+            }
+            case CHANGE_NEW_POST_TEXT: {
                 this._state.profilePage.textareaValue = action.newValue
-                this._callSubscriber(store)
+                this._callSubscriber(this)
+                break
+            }
+            case ADD_MESSAGE: {
+                this._state.dialogsPage.messages.push({id: 10, message: this._state.dialogsPage.newMessageText})
+                this._state.dialogsPage.newMessageText = ''
+                this._callSubscriber(this)
+                break
+            }
+            case CHANGE_NEW_MESSAGE_TEXT: {
+                this._state.dialogsPage.newMessageText = action.newMessageText
+                this._callSubscriber(this)
+                break
+            }
         }
     },
 
@@ -67,12 +91,17 @@ let store = {
 
 export const addPostActionCreator = () => ({type: ADD_POST})
 
+export const addMessageActionCreator = () => ({type: ADD_MESSAGE})
+
 export const changeNewPostTextActionCreator = (text) => ({
     type: CHANGE_NEW_POST_TEXT,
     newValue: text
 })
 
-
+export const changeNewMessageTextActionCreator = (text) => ({
+    type: CHANGE_NEW_MESSAGE_TEXT,
+    newMessageText: text
+})
 
 
 export default store
