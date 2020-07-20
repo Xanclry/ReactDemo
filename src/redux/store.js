@@ -1,3 +1,6 @@
+const ADD_POST = 'ADD_POST'
+const CHANGE_NEW_POST_TEXT = 'CHANGE_NEW_POST_TEXT'
+
 let store = {
     _state: {
         dialogsPage: {
@@ -46,20 +49,30 @@ let store = {
         console.log('State was changed')
     },
 
-    addPost() {
-        debugger
-        this._state.profilePage.posts.push({id: 4, message: this._state.profilePage.textareaValue, likeCount: 0})
-        this._state.profilePage.textareaValue = ''
-        this._callSubscriber(store)
+    dispatch(action) {
+        if (action.type === ADD_POST) {
+                this._state.profilePage.posts.push({id: 4, message: this._state.profilePage.textareaValue, likeCount: 0})
+                this._state.profilePage.textareaValue = ''
+                this._callSubscriber(store)
+        } else if (action.type === CHANGE_NEW_POST_TEXT) {
+                this._state.profilePage.textareaValue = action.newValue
+                this._callSubscriber(store)
+        }
     },
-    changeTextArea(newValue) {
-        this._state.profilePage.textareaValue = newValue
-        this._callSubscriber(store)
-    },
+
     subscribe(observer) {
         this._callSubscriber = observer
     }
 }
+
+export const addPostActionCreator = () => ({type: ADD_POST})
+
+export const changeNewPostTextActionCreator = (text) => ({
+    type: CHANGE_NEW_POST_TEXT,
+    newValue: text
+})
+
+
 
 
 export default store
